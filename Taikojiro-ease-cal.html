@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://currydry0608hk.github.io/InertiaCalculator/Taikojiro-ease-cal.html" />
+    <meta property="og:title" content="太鼓さん次郎 イージング計算機" />
+    <meta property="og:description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太鼓さん次郎 イージング計算機</title>
+    <link rel="stylesheet" href="Taikojiro-ease-cal.css">
+</head>
+<body>
+    <h1 class="center">太鼓さん次郎 イージング計算機</h1>
+
+    <p>太鼓さん次郎のHBSCROLL上での、イージングっぽい動きを計算するサイトです。</p>
+
+    <br>
+
+    <p class="center">
+        <b>BPM</b><br>
+        <input type="text" id="BPM" value="240" style="text-align: center;" size="10" maxlength="16">
+    </p>
+
+    <p class="center">
+        <b>移動距離</b><br>
+        <input type="text" id="distanceNumer" value="1" style="text-align: center;" size="5" maxlength="16">
+        /
+        <input type="text" id="distanceDenom" value="1" style="text-align: center;" size="5" maxlength="16">
+    </p>
+
+    <p class="center">
+        <b>移動時間</b><br>
+        <input type="text" id="timeNumer" value="1" style="text-align: center;" size="5" maxlength="16">
+        /
+        <input type="text" id="timeDenom" value="1" style="text-align: center;" size="5" maxlength="16">
+    </p>
+
+    <p class="center">
+        <b>移動方向</b><br>
+            (HSが正の場合)<br>
+        <select id="direction">
+            <option value="right">右</option>
+            <option value="left" selected>左</option>
+        </select>
+    </p>
+
+    <p class="center">
+        <b>分割数</b><br>
+        <input type="text" id="numOfDiv" value="8" style="text-align: center;" size="2" maxlength="16">
+    </p>
+
+    <p class="center">
+        <b>イージングの種類</b><br>
+            ( <a href="https://easings.net/">https://easings.net/</a> 等を参考にしてください)<br>
+        <select id="easeType">
+            <option value="linear">linear</option>
+            <option value="easeInSine">easeInSine</option>
+            <option value="easeOutSine">easeOutSine</option>
+            <option value="easeInOutSine">easeInOutSine</option>
+            <option value="easeInQuad">easeInQuad</option>
+            <option value="easeOutQuad">easeOutQuad</option>
+            <option value="easeInOutQuad">easeInOutQuad</option>
+            <option value="easeInCubic">easeInCubic</option>
+            <option value="easeOutCubic">easeOutCubic</option>
+            <option value="easeInOutCubic">easeInOutCubic</option>
+            <option value="easeInQuart">easeInQuart</option>
+            <option value="easeOutQuart">easeOutQuart</option>
+            <option value="easeInOutQuart">easeInOutQuart</option>
+            <option value="easeInQuint">easeInQuint</option>
+            <option value="easeOutQuint">easeOutQuint</option>
+            <option value="easeInOutQuint">easeInOutQuint</option>
+            <option value="easeInExpo">easeInExpo</option>
+            <option value="easeOutExpo">easeOutExpo</option>
+            <option value="easeInOutExpo">easeInOutExpo</option>
+            <option value="easeInCirc">easeInCirc</option>
+            <option value="easeOutCirc">easeOutCirc</option>
+            <option value="easeInOutCirc">easeInOutCirc</option>
+            <option value="easeInBack">easeInBack</option>
+            <option value="easeOutBack">easeOutBack</option>
+            <option value="easeInOutBack">easeInOutBack</option>
+            <option value="easeInElastic">easeInElastic</option>
+            <option value="easeOutElastic">easeOutElastic</option>
+            <option value="easeInOutElastic">easeInOutElastic</option>
+            <option value="easeInBounce">easeInBounce</option>
+            <option value="easeOutBounce">easeOutBounce</option>
+            <option value="easeInOutBounce">easeInOutBounce</option>
+        </select>
+    </p>
+
+    <p class="center">
+        <b>BPM値の小数点第n位までを表示</b><br>
+            (第n+1位で四捨五入)<br>
+        <select id="BPMRoundDigit">
+            <option value="0">&ensp;0</option>
+            <option value="1">&ensp;1</option>
+            <option value="2">&ensp;2</option>
+            <option value="3">&ensp;3</option>
+            <option value="4">&ensp;4</option>
+            <option value="5">&ensp;5</option>
+            <option value="6" selected>&ensp;6</option>
+            <option value="7">&ensp;7</option>
+            <option value="8">&ensp;8</option>
+            <option value="9">&ensp;9</option>
+            <option value="10">10</option>
+        </select>
+    </p>
+
+    <p class="center">
+        <b>MEASURE値の分母</b><br>
+        <input type="text" id="MEASUREsDenom" value="1000" style="text-align: center;" size="5" maxlength="16">
+        </select>
+    </p>
+
+    <div class="center">
+        <button id="calculateButton" onclick="calculateButtonClicked()">計算する</button>
+    </div>
+
+    <div class="result" id="resultArea"></div>
+
+    <script src="Taikojiro-ease-cal.js"></script>
+
+</body>
+</html>
