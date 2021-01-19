@@ -25,6 +25,9 @@ function calculateButtonClicked() {
     let direction = document.getElementById('direction').value;
     let numOfDiv = document.getElementById('numOfDiv').value;
     let easeType = document.getElementById('easeType').value;
+    let easeRangeStart = document.getElementById('easeRangeStart').value;
+    let easeRangeFinal = document.getElementById('easeRangeFinal').value;
+    let easeRangeDiff = easeRangeFinal - easeRangeStart;
     let BPMRoundDigit = document.getElementById('BPMRoundDigit').value;
     let MEASUREsDenom = document.getElementById('MEASUREsDenom').value;
 
@@ -295,7 +298,8 @@ function calculateButtonClicked() {
     //計算結果本文出力
 
     let easeBPMCriteria = BPM * distance * (timeDenom / timeNumer);
-    let lengthOfMEASURE = distance / numOfDiv;
+    let lengthOfABar = distance / numOfDiv;
+    let easeValueCriteria = (easeCal(easeRangeFinal) - easeCal(easeRangeStart)) / numOfDiv;
     if (direction === 'left') {
         direction = 1;
     }   else if (direction === 'right') {
@@ -305,14 +309,14 @@ function calculateButtonClicked() {
     let totalSecondsJiro = 0;
 
     for (let i = 1; i <=numOfDiv; i++) {
-        let lastEaseTime = (i - 1) / numOfDiv;
+        let lastEaseTime = Number(easeRangeStart) + (easeRangeDiff * ((i - 1) / numOfDiv));
         let lastEaseValue = easeCal(lastEaseTime);
-        let easeTime = i / numOfDiv;
+        let easeTime = Number(easeRangeStart) + (easeRangeDiff * (i / numOfDiv));
         let easeValue = easeCal(easeTime);
         let easeDisplacement = easeValue - lastEaseValue;
-        let easeMagnification = easeDisplacement / lengthOfMEASURE;
-        result.insertAdjacentHTML('beforeend', '#BPMCHANGE ' + ((Math.round((easeBPMCriteria * easeMagnification) * Math.pow(10, BPMRoundDigit)) / Math.pow(10, BPMRoundDigit)) * direction) + '<br>#MEASURE ' + (Math.round(lengthOfMEASURE * easeMagnification * MEASUREsDenom) * direction) + '/' + MEASUREsDenom + '<br>0,<br>');
-        let seconds = 240 / Math.abs(Math.round((easeBPMCriteria * easeMagnification) * Math.pow(10, BPMRoundDigit)) / Math.pow(10, BPMRoundDigit)) * (Math.abs(Math.round(lengthOfMEASURE * easeMagnification * MEASUREsDenom)) / MEASUREsDenom);
+        let easeMagnification = easeDisplacement / easeValueCriteria;
+        result.insertAdjacentHTML('beforeend', '#BPMCHANGE ' + ((Math.round((easeBPMCriteria * easeMagnification) * Math.pow(10, BPMRoundDigit)) / Math.pow(10, BPMRoundDigit)) * direction) + '<br>#MEASURE ' + (Math.round(lengthOfABar * easeMagnification * MEASUREsDenom) * direction) + '/' + MEASUREsDenom + '<br>0,<br>');
+        let seconds = 240 / Math.abs(Math.round((easeBPMCriteria * easeMagnification) * Math.pow(10, BPMRoundDigit)) / Math.pow(10, BPMRoundDigit)) * (Math.abs(Math.round(lengthOfABar * easeMagnification * MEASUREsDenom)) / MEASUREsDenom);
         totalSeconds = totalSeconds + seconds;
         totalSecondsJiro = totalSecondsJiro + (Math.floor( seconds * Math.pow( 10, 3 ) ) / Math.pow( 10, 3 ));
         //console.log(totalSeconds);
