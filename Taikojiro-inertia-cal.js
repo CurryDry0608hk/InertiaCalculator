@@ -26,7 +26,7 @@ function calculateButtonClicked() {
     var plusOrMinus = document.getElementById('plusOrMinus').value;
     var upOrDown = document.getElementById('upOrDown').value;
     var NumberOfSpeedChanges = document.getElementById('NumberOfSpeedChanges').value;
-    var BPMRoundDigit = document.getElementById('BPMRoundDigit').value;
+    var BPMFloorDigit = document.getElementById('BPMFloorDigit').value;
 
     //警告メッセージ
     if (BPM < 0) {
@@ -57,11 +57,11 @@ function calculateButtonClicked() {
         var BPM4Times3 = BPM * (4 / 4) * ((distanceNumer / distanceDenom) * (16 / 15)) * (timeDenom / timeNumer);
         var BPM4Times4 = BPM * (8 / 4) * ((distanceNumer / distanceDenom) * (16 / 15)) * (timeDenom / timeNumer);
 
-        //BPM四捨五入
-        var BPM4Times1 = Math.round( BPM4Times1 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM4Times2 = Math.round( BPM4Times2 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM4Times3 = Math.round( BPM4Times3 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM4Times4 = Math.round( BPM4Times4 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
+        //BPM切り捨て
+        var BPM4Times1 = Math.floor( BPM4Times1 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM4Times2 = Math.floor( BPM4Times2 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM4Times3 = Math.floor( BPM4Times3 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM4Times4 = Math.floor( BPM4Times4 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
 
         if (upOrDown === 'up') {
             
@@ -153,15 +153,15 @@ function calculateButtonClicked() {
         var BPM8Times7 = BPM * (24 / 16) * ((distanceNumer / distanceDenom) * (128 / 105)) * (timeDenom / timeNumer);
         var BPM8Times8 = BPM * (32 / 16) * ((distanceNumer / distanceDenom) * (128 / 105)) * (timeDenom / timeNumer);
 
-        //BPM四捨五入
-        var BPM8Times1 = Math.round( BPM8Times1 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times2 = Math.round( BPM8Times2 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times3 = Math.round( BPM8Times3 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times4 = Math.round( BPM8Times4 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times5 = Math.round( BPM8Times5 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times6 = Math.round( BPM8Times6 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times7 = Math.round( BPM8Times7 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
-        var BPM8Times8 = Math.round( BPM8Times8 * Math.pow( 10, BPMRoundDigit ) ) / Math.pow( 10, BPMRoundDigit );
+        //BPM切り捨て
+        var BPM8Times1 = Math.floor( BPM8Times1 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times2 = Math.floor( BPM8Times2 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times3 = Math.floor( BPM8Times3 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times4 = Math.floor( BPM8Times4 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times5 = Math.floor( BPM8Times5 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times6 = Math.floor( BPM8Times6 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times7 = Math.floor( BPM8Times7 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
+        var BPM8Times8 = Math.floor( BPM8Times8 * Math.pow( 10, BPMFloorDigit ) ) / Math.pow( 10, BPMFloorDigit );
 
         if (upOrDown === 'up') {
 
